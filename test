@@ -1,0 +1,20 @@
+function randomOperatorReplacement(inputText: string): string {
+  // Define the list of operators to replace
+  const operators = ['+', '-', '*', '/'];
+  // Select a random operator from the list
+  const randomOperator = operators[Math.floor(Math.random() * operators.length)];
+  
+  // Create a regular expression to match the selected operator
+  const operatorRegex = new RegExp(`\\${randomOperator}`, 'g');
+
+  // Replace the selected operator with a random replacement (_ or %)
+  const replacement = Math.random() < 0.5 ? '_' : '%';
+  const newText = inputText.replace(operatorRegex, replacement);
+
+  return newText;
+}
+
+// Example usage:
+const inputText = "2 + 3 * 4 / 5 - 6";
+const outputText = randomOperatorReplacement(inputText);
+console.log(outputText);
